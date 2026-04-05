@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Avatar Mirror</title>
+  <style>
+    body { background:#222; color:#fff; margin:0; font-family:sans-serif; text-align:center; }
+    #vrm-canvas { width:80vw; height:60vh; background:#000; border-radius:8px; }
+  </style>
+</head>
+<body>
+  <h1>3D VRM Avatar Mirror</h1>
+  <input type="file" id="vrm-upload" accept=".vrm">
+  <br>
+  <video id="webcam" width="320" height="240" autoplay playsinline style="display: none"></video>
+  <canvas id="vrm-canvas"></canvas>
+  <div>Pick a VRM or use the sample. Allow webcam and move!</div>
+  <script type="module" src="vrm_viewer.js"></script>
+</body>
+</html>
