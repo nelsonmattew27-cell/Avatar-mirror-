@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>3D Avatar Mirror</title>
-  <style>
-    body { background:#222; color:#fff; margin:0; font-family:sans-serif; text-align:center; }
-    #vrm-canvas { width:80vw; height:60vh; background:#000; border-radius:8px; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Test</title>
 </head>
-<body>
-  <h1>3D VRM Avatar Mirror</h1>
-  <input type="file" id="vrm-upload" accept=".vrm">
-  <br>
-  <video id="webcam" width="320" height="240" autoplay playsinline style="display: none"></video>
-  <canvas id="vrm-canvas"></canvas>
-  <div>Pick a VRM or use the sample. Allow webcam and move!</div>
-  <script type="module" src="vrm_viewer.js"></script>
+<body style="margin:0;background:black;color:white;font-family:Arial;">
+  <h2 style="padding:16px;">Camera Test</h2>
+  <video id="cam" autoplay playsinline muted style="width:100%;max-width:500px;"></video>
+  <p id="msg" style="padding:16px;">Starting...</p>
+
+  <script>
+    const video = document.getElementById('cam');
+    const msg = document.getElementById('msg');
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+      .then(stream => {
+        video.srcObject = stream;
+        msg.textContent = "Camera works.";
+      })
+      .catch(err => {
+        msg.textContent = "Error: " + err.name + " - " + err.message;
+      });
+  </script>
 </body>
 </html>
